@@ -372,7 +372,7 @@ const Dashboard = () => {
   // Fetch Items
   const fetchItems = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/get");
+      const response = await axios.get("https://sony-admin-be.onrender.com/api/get");
       setItems(response.data);
     } catch (error) {
       console.error("Error fetching items:", error);
@@ -394,7 +394,7 @@ const Dashboard = () => {
       if (editingItem) {
         // Update item
         const response = await axios.put(
-          `http://localhost:5000/api/update/${editingItem._id}`,
+          `https://sony-admin-be.onrender.com/api/update/${editingItem._id}`,
           newItem
         );
         if (response.status === 200) {
@@ -403,7 +403,7 @@ const Dashboard = () => {
         }
       } else {
         // Add new item
-        const response = await axios.post("http://localhost:5000/api/add", newItem);
+        const response = await axios.post("https://sony-admin-be.onrender.com/api/add", newItem);
         if (response.status === 200 || response.status === 201) {
           alert("Item added successfully!");
         }
@@ -438,7 +438,7 @@ const Dashboard = () => {
   // Delete an item
   const handleDeleteItem = async (id) => {
     try {
-      const response = await axios.delete(`http://localhost:5000/api/delete/${id}`);
+      const response = await axios.delete(`https://sony-admin-be.onrender.com/api/delete/${id}`);
       if (response.status === 200) {
         alert("Item deleted successfully!");
         fetchItems();
@@ -463,7 +463,7 @@ const Dashboard = () => {
     }
   
     try {
-      const response = await axios.post("http://localhost:5000/api/change-password", {
+      const response = await axios.post("https://sony-admin-be.onrender.com/api/change-password", {
         adminId,
         oldPassword,
         newPassword,
@@ -489,7 +489,7 @@ const Dashboard = () => {
   const fetchOrders = async () => {
     setLoading(true);
     try {
-      const response = await axios.get("http://localhost:5000/api/admin/orders");
+      const response = await axios.get("https://sony-admin-be.onrender.com/api/admin/orders");
       if (response.status === 200) {
         setOrders(response.data.orders);
       } else {
